@@ -22,7 +22,6 @@
 
 ### Client Features
 - [ ] Reconnect on failure.
-- [ ] Command support (e.g., `/help`, `/list`, `/quit`).
 
 ### Admin Commands
 - [ ] `/kick user`
