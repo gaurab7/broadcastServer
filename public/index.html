@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broadcast Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .panel {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input {
+            padding: 8px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        #messages {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Broadcast Server</h1>
+    
+    <div class="container">
+        <div class="panel">
+            <h2>Room Management</h2>
+            <input type="text" id="roomName" placeholder="Room name">
+            <button id="createRoom">Create Room</button>
+            <button id="joinRoom">Join Room</button>
+            
+            <h3>Available Rooms</h3>
+            <ul id="roomList"></ul>
+        </div>
+        
+        <div class="panel">
+            <h2>Chat</h2>
+            <div id="messages"></div>
+            <input type="text" id="messageInput" placeholder="Type your message">
+            <button id="sendMessage">Send</button>
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
+</body>
+</html>
