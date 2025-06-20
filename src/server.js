@@ -1,19 +1,27 @@
-import express from 'express'
+import { createServer } from "http"
+import express from "express"
+import { Server } from "socket.io"
 
 const app = express()
+
 app.use(express.json())
+app.use(express.static('public'))
+
 
 const PORT = process.env.PORT || 8848
 
+const httpServer = createServer(app)
 
-//ROUTEs
-app.use('/')//take to auth routes
-app.use('/rooms')//take to room routes
-app.use('/msg')//take to msg routes
-app.use('/users')//take to user/admin actions route
+const io = new Server(httpServer)
 
+io.on('connection', (socket) => {
+    console.log('A user connected')
+    
+    socket.on('disconnect', () => {
+        console.log('User disconnected')
+    })
+})
 
-
-app.listen(PORT, ()=>{
-    console.log(`Server started on PORT: ${PORT}`)
+httpServer.listen(PORT, () => {
+  console.log(`Server started on PORT: ${PORT}`)
 })
