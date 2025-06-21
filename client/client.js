@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { io } from 'socket.io-client'
+import chalk from 'chalk'
 import readline from 'readline'
 import { Command } from 'commander'
 
@@ -17,14 +18,14 @@ const rl = readline.createInterface( {
 //connect is a client side predefined event
 //connection is serverside
 socket.on('connect', ()=>{
-    console.log('Connected to the server')
+    console.log(chalk.green('Connected to the server'))
     rl.prompt()//shows >
 })
 
 socket.on('msg', (msg)=>{
     process.stdout.clearLine()
     process.stdout.cursorTo(0)
-    console.log(`${msg}`)
+    console.log(chalk.blue.bgCyan(`${msg}`))
     rl.prompt(true)
 })
 
