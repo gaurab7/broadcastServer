@@ -1,19 +1,11 @@
-import { Server } from "socket.io"
-
-export default function attachSocketIO(httpServer) {
-  const io = new Server(httpServer)
-
-  io.on("connection", (socket) => {
-    console.log("Socket connected:", socket.id)
-
-    socket.on("broadcast", (msg) => {
-      io.emit("broadcast", msg)
-    });
-
-    socket.on("disconnect", () => {
-      console.log("Socket disconnected:", socket.id);
+export default function socketHandler(server)
+{
+    server.on('connection', (socket)=>{
+        console.log(`User Connected with ID: ${socket.id}`)
+        socket.on('message', (msg)=>{
+              console.log(`Broadcast: ${msg}`)
+              socket.broadcast.emit(msg)
     })
-  })
+    })
 
-  return io
 }

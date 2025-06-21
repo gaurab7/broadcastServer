@@ -1,6 +1,7 @@
 import { createServer } from "http"
 import express from "express"
 import { Server } from "socket.io"
+import  socketHandler  from './services/broadcaster.js'
 
 const app = express()
 
@@ -12,15 +13,9 @@ const PORT = process.env.PORT || 8848
 
 const httpServer = createServer(app)
 
-const io = new Server(httpServer)
+const server = new Server(httpServer)
+socketHandler(server)
 
-io.on('connection', (socket) => {
-    console.log('A user connected')
-    
-    socket.on('disconnect', () => {
-        console.log('User disconnected')
-    })
-})
 
 httpServer.listen(PORT, () => {
   console.log(`Server started on PORT: ${PORT}`)
